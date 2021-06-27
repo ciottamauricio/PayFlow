@@ -66,18 +66,18 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.primary,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                //Navigator.pushNamed(context, "/barcode_scanner");
+                Navigator.pushNamed(context, "/insert_boleto");
+              },
               child: Container(
                 height: 56,
                 width: 56,
                 decoration: BoxDecoration(
                     color: AppColors.primary,
                     borderRadius: BorderRadius.circular(5)),
-                child: IconButton(
-                  onPressed: () {},
-                  icon:
-                      Icon(Icons.add_box_outlined, color: AppColors.background),
-                ),
+                child:
+                    Icon(Icons.add_box_outlined, color: AppColors.background),
               ),
             ),
             IconButton(
