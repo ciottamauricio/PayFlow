@@ -1,46 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:payflow/shared/theme/app_colors.dart';
-import 'package:payflow/shared/theme/app_text_styles.dart';
-import 'package:payflow/shared/widgets/divider_vertical/divider_vertical_widget.dart';
+import 'package:payflow/shared/widgets/divider/divider_wiget.dart';
 import 'package:payflow/shared/widgets/label_button/label_button.dart';
 
 class SetLabelButtons extends StatelessWidget {
-  final String primaryLabel;
-  final VoidCallback primaryOnPressed;
-  final String secondaryLabel;
-  final VoidCallback secondaryOnPressed;
+  final String labelPrimary;
+  final VoidCallback onTapPrimary;
+  final String labelSecondary;
+  final VoidCallback onTapSecondary;
   final bool enablePrimaryColor;
-
-  const SetLabelButtons(
-      {Key key,
-      this.primaryLabel,
-      this.secondaryLabel,
-      this.primaryOnPressed,
-      this.secondaryOnPressed,
-      this.enablePrimaryColor = false})
-      : super(key: key);
+  final bool enableSecondaryColor;
+  const SetLabelButtons({
+    Key key,
+    this.labelPrimary,
+    this.onTapPrimary,
+    this.labelSecondary,
+    this.onTapSecondary,
+    this.enablePrimaryColor = false,
+    this.enableSecondaryColor = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.shape,
+      color: AppColors.background,
       height: 56,
       child: Row(
         children: [
-          Expanded(
-            child: LabelButton(
-              label: primaryLabel,
-              onPressed: primaryOnPressed,
-              style: enablePrimaryColor ? TextStyles.buttonPrimary : null,
+          if (enablePrimaryColor) ...[
+            LabelButton.primary(
+              label: labelPrimary,
+              onPressed: onTapPrimary,
             ),
-          ),
-          DividerVerticalWidget(),
-          Expanded(
-            child: LabelButton(
-              label: secondaryLabel,
-              onPressed: secondaryOnPressed,
+          ] else ...[
+            LabelButton.heading(
+              label: labelPrimary,
+              onPressed: onTapPrimary,
             ),
+          ],
+          DividerWidget(
+            height: 56,
           ),
+          if (enableSecondaryColor) ...[
+            LabelButton.primary(
+              label: labelSecondary,
+              onPressed: onTapSecondary,
+            ),
+          ] else ...[
+            LabelButton.heading(
+              label: labelSecondary,
+              onPressed: onTapSecondary,
+            ),
+          ],
         ],
       ),
     );

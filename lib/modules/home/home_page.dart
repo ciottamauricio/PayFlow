@@ -66,9 +66,10 @@ class _HomePageState extends State<HomePage> {
               color: AppColors.primary,
             ),
             GestureDetector(
-              onTap: () {
-                //Navigator.pushNamed(context, "/barcode_scanner");
-                Navigator.pushNamed(context, "/insert_boleto");
+              onTap: () async {
+                await Navigator.pushNamed(context, "/barcode_scanner");
+                setState(() {});
+                //Navigator.pushNamed(context, "/insert_boleto");
               },
               child: Container(
                 height: 56,

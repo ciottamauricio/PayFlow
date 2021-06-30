@@ -25,6 +25,11 @@ class TextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.background,
   );
+  static final input = GoogleFonts.inter(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColors.input,
+  );
   static final titleListTile = GoogleFonts.lexendDeca(
     fontSize: 17,
     fontWeight: FontWeight.w600,
